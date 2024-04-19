@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite o salário do colaborador: ");
+        double salario = scanner.nextDouble();
+
+        
+        Colaborador colaborador = new Colaborador(salario);
+
+         colaborador.exibirResultado();
+
+        scanner.close();
+    }
+}
+
+class Colaborador {
+    private double salario;
+
+    public Colaborador(double salario) {
+        this.salario = salario;
+    }
+
+    public void exibirResultado() {
+        double[] resultados = calcularReajuste();
+        System.out.println("1. Salário antes do reajuste: $" + salario);
+        System.out.println("2. Percentual de aumento aplicado: " + resultados[0] + "%");
+        System.out.println("3. Valor do aumento: $" + resultados[1]);
+        System.out.println("4. Novo salário, após o aumento: $" + resultados[2]);
+        System.out.println("5. Valor do aumento real, descontada a inflação: $" + resultados[3]);
+    }
+
+    private double[] calcularReajuste() {
+        double percentualAumento;
+        double valorAumento;
+        double novoSalario;
+        double aumentoReal;
+
+        double salarioInicial = 280.00;
+        double salarioSegundoIntervalo = 700.00;
+        double salarioTerceiroIntervalo = 1500.00;
+        double inflacao = 3.8 / 100; // Convertendo a inflação para decimal
+
+        if (salario <= salarioInicial) {
+            percentualAumento = 20;
+        } else if (salario <= salarioSegundoIntervalo) {
+            percentualAumento = 15;
+        } else if (salario <= salarioTerceiroIntervalo) {
+            percentualAumento = 10;
+        } else {
+            percentualAumento = 5;
+        }
+
+        valorAumento = salario * (percentualAumento / 100);
+        novoSalario = salario + valorAumento;
+
+        aumentoReal = valorAumento - (salario * inflacao);
+
+        double[] resultados = {percentualAumento, valorAumento, novoSalario, aumentoReal};
+
+        return resultados;
+    }
+}
