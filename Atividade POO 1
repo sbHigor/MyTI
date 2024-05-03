@@ -1,0 +1,268 @@
+package view;
+
+import controller.Controlador;
+
+import javax.swing.*;
+import java.awt.event.WindowEvent;
+
+public class TurmaFrame {
+    private JButton listarAlunosButton;
+    private JButton resultadosButton;
+    private JButton novoAlunoButton;
+    private Controlador controlador;
+
+    public JButton getListarAlunosButton() {
+        return listarAlunosButton;
+    }
+
+    public void setListarAlunosButton(JButton listarAlunosButton) {
+        this.listarAlunosButton = listarAlunosButton;
+    }
+
+    public JButton getResultadosButton() {
+        return resultadosButton;
+    }
+
+    public void setResultadosButton(JButton resultadosButton) {
+        this.resultadosButton = resultadosButton;
+    }
+
+    public JButton getNovoAlunoButton() {
+        return novoAlunoButton;
+    }
+
+    public void setNovoAlunoButton(JButton novoAlunoButton) {
+        this.novoAlunoButton = novoAlunoButton;
+    }
+
+    public Controlador getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(Controlador controlador) {
+        this.controlador = controlador;
+    }
+
+    public static void main(String[] args) {
+
+    }
+
+    private void thisWindowClosing() {
+
+    }
+    private void novoAlunoButtonActionPerformed() {
+
+    }
+    private void listarAlunosButtonActionPerformed() {
+
+    }
+    private void resultadosButtonActionPerformed() {
+
+    }
+}
+
+TurmaFrame
+
+
+
+package view;
+
+import controller.Controlador;
+
+import javax.swing.*;
+
+public class AlunosCadastradosFrame {
+    private JMenuItem cadastrarMenuItem;
+    private JMenuItem editarMenuItem;
+    private JList alunosList;
+    private Controlador controlador;
+
+    public void carregarDados(){
+
+    }
+    private void cadastrarMenuItemActionPerformed() {
+
+    }
+    private void editarMenuItemActionPerformed() {
+
+    }
+    public void atualizarDados(){
+
+    }
+}
+Alunos cadastrados frame
+
+
+
+package view;
+
+import controller.Controlador;
+import model.Aluno;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
+
+public class AlunoFrame {
+    private JTextField nomeTextField;
+    private JButton okButton;
+    private JButton cancelarButton;
+    private JTextField notaTextField;
+    private Controlador controlador;
+    private Aluno aluno;
+    private boolean editando;
+
+    public void setControlador(Controlador controlador) {
+        this.controlador = controlador;
+    }
+    private void thisWindowClosing() {
+
+    }
+    private void cancelarButtonActionPerformed() {
+
+    }
+    private void cancelar() {
+
+    }
+    private void okButtonActionPerformed() {
+
+    }
+    public void carregarDados() {
+
+    }
+
+    public JButton getOkButton() {
+        return okButton;
+    }
+
+    public void setOkButton(JButton okButton) {
+        this.okButton = okButton;
+    }
+
+    public JTextField getNomeTextField() {
+        return nomeTextField;
+    }
+
+    public void setNomeTextField(JTextField nomeTextField) {
+        this.nomeTextField = nomeTextField;
+    }
+
+    public JButton getCancelarButton() {
+        return cancelarButton;
+    }
+
+    public void setCancelarButton(JButton cancelarButton) {
+        this.cancelarButton = cancelarButton;
+    }
+
+    public JTextField getNotaTextField() {
+        return notaTextField;
+    }
+
+    public void setNotaTextField(JTextField notaTextField) {
+        this.notaTextField = notaTextField;
+    }
+
+    public Controlador getControlador() {
+        return controlador;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public boolean isEditando() {
+        return editando;
+    }
+
+    public void setEditando(boolean editando) {
+        this.editando = editando;
+    }
+}
+AlunoFrame
+
+
+
+package model;
+
+public class Aluno {
+    private String nome;
+    private double nota;
+
+    public String getNome() {
+
+    }
+    public void setNome() {
+
+    }
+    public double getNota() {
+
+    }
+    public void setNota() {
+
+    }
+    public String toString(){
+
+    }
+}
+Aluno
+
+
+
+package controller;
+
+import model.Aluno;
+
+public class Controlador {
+
+    private Aluno[] alunos;
+    private int pos;
+    private Alunos alunosCadastradosFrame;
+
+    public Aluno[] getAlunos() {
+
+    }
+    public void cadastrarAluno() {
+
+    }
+    public boolean salvarAluno() {
+
+    }
+    public void listarAlunos() {
+
+    }
+    public void editarAluno() {
+
+    }
+    public void terminarEdicao() {
+
+    }
+    public double calcularMedia() {
+
+    }
+
+    public void setAlunos(Aluno[] alunos) {
+        this.alunos = alunos;
+    }
+
+    public int getPos() {
+        return pos;
+    }
+
+    public void setPos(int pos) {
+        this.pos = pos;
+    }
+
+    public Alunos getAlunosCadastradosFrame() {
+        return alunosCadastradosFrame;
+    }
+
+    public void setAlunosCadastradosFrame(Alunos alunosCadastradosFrame) {
+        this.alunosCadastradosFrame = alunosCadastradosFrame;
+    }
+}
+Controlador
