@@ -1,0 +1,166 @@
+public class Controlador {
+    private ProdutoFrame produtoFrame;
+
+    public Controlador() {
+        produtoFrame = new ProdutoFrame();
+        produtoFrame.setControlador(this);
+    }
+
+    public void salvarProduto(String nome, double preco, int quantidade) {
+
+        if (nome.isEmpty() || preco <= 0 || quantidade <= 0) {
+            produtoFrame.mostrarMensagemErro("Por favor, preencha todos os campos corretamente.");
+            return;
+        }
+
+        Produto produto = new Produto(nome, preco, quantidade);
+        produtoFrame.mostrarMensagemSucesso("Produto cadastrado: " + produto.getNome());
+    }
+
+    public static void main(String[] args) {
+        new Controlador();
+    }
+}
+
+
+import javax.swing.*;
+
+public class ProdutoFrame extends JFrame {
+    private JLabel labelNome;
+    private JLabel labelPreco;
+    private JLabel labelQuantidade;
+
+    private JTextField textFieldNome;
+    private JTextField textFieldPreco;
+    private JTextField textFieldQuantidade;
+
+    private JButton buttonSalvar;
+
+    public ProdutoFrame() {
+
+        setTitle("Cadastro de Produto");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(4, 2));
+
+        labelNome = new JLabel("Nome:");
+        add(labelNome);
+
+        textFieldNome = new JTextField();
+        add(textFieldNome);
+
+        labelPreco = new JLabel("Preço:");
+        add(labelPreco);
+
+        textFieldPreco = new JTextField();
+        add(textFieldPreco);
+
+        labelQuantidade = new JLabel("Quantidade:");
+        add(labelQuantidade);
+
+        textFieldQuantidade = new JTextField();
+        add(textFieldQuantidade);
+
+        buttonSalvar = new JButton("Salvar");
+        add(buttonSalvar);
+
+        buttonSalvar.addActionListener(e -> {
+
+            String nome = textFieldNome.getText();
+            double preco = Double.parseDouble(textFieldPreco.getText());
+            int quantidade = Integer.parseInt(textFieldQuantidade.getText());
+
+            Produto produto = new Produto(nome, preco, quantidade);
+
+            System.out.println("Produto cadastrado: " + produto.getNome() + ", Preço: " + produto.getPreco() + ",             Quantidade: " + produto.getQuantidade());
+       
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+
+        new ProdutoFrame();
+    }
+}
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+
+public class ListaProdutosFrame extends JFrame {
+    private JTable tabelaProdutos;
+    private DefaultTableModel model;
+
+    public ListaProdutosFrame() {
+
+        setTitle("Lista de Produtos");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        model = new DefaultTableModel();
+        model.addColumn("Nome");
+        model.addColumn("Preço");
+        model.addColumn("Quantidade");
+
+        tabelaProdutos = new JTable(model);
+
+        JScrollPane scrollPane = new JScrollPane(tabelaProdutos);
+        add(scrollPane, BorderLayout.CENTER);
+
+        setVisible(true);
+    }
+
+    public void adicionarProduto(Produto produto) {
+        model.addRow(new Object[]{produto.getNome(), produto.getPreco(), produto.getQuantidade()});
+    }
+
+    public static void main(String[] args) {
+        new ListaProdutosFrame();
+    }
+}
+
+public class Produto {
+    
+    private String nome;
+    private double preco;
+    private int quantidade;
+
+    public Produto(String nome, double preco, int quantidade) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        
+        this.preco = preco;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        
+        this.quantidade = quantidade;
+    }
+
+        public double calcularValorTotal() {
+        return preco * quantidade;
+    }
+}
+
+
+
